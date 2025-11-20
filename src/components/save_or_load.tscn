@@ -1,0 +1,178 @@
+[gd_scene load_steps=2 format=3 uid="uid://btcralp0rqir0"]
+
+[ext_resource type="Script" uid="uid://bhysn58nugimu" path="res://addons/goblin/src/components/save_or_load.gd" id="1_vnr8e"]
+
+[node name="SaveOrLoad" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vnr8e")
+
+[node name="Layout" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.04
+anchor_top = 0.0711111
+anchor_right = 0.96
+anchor_bottom = 0.924444
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Header" type="HBoxContainer" parent="Layout"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Layout/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Save / Load"
+vertical_alignment = 1
+
+[node name="Close" type="Button" parent="Layout/Header"]
+layout_mode = 2
+text = "Close"
+
+[node name="HSeparator" type="HSeparator" parent="Layout"]
+layout_mode = 2
+
+[node name="SaveSlots" type="GridContainer" parent="Layout"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/h_separation = 15
+theme_override_constants/v_separation = 15
+columns = 4
+
+[node name="AutoSave" type="Panel" parent="Layout/SaveSlots"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Wrapper" type="VBoxContainer" parent="Layout/SaveSlots/AutoSave"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0434783
+anchor_top = 0.0282486
+anchor_right = 0.956522
+anchor_bottom = 0.977401
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Contents" type="RichTextLabel" parent="Layout/SaveSlots/AutoSave/Wrapper"]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+fit_content = true
+
+[node name="Save" type="Button" parent="Layout/SaveSlots/AutoSave/Wrapper"]
+layout_mode = 2
+text = "Save Autosave"
+
+[node name="Load" type="Button" parent="Layout/SaveSlots/AutoSave/Wrapper"]
+layout_mode = 2
+text = "Load Autosave"
+
+[node name="Save1" type="Panel" parent="Layout/SaveSlots"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Wrapper" type="VBoxContainer" parent="Layout/SaveSlots/Save1"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0434783
+anchor_top = 0.0282486
+anchor_right = 0.956522
+anchor_bottom = 0.977401
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Contents" type="RichTextLabel" parent="Layout/SaveSlots/Save1/Wrapper"]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+fit_content = true
+
+[node name="Save" type="Button" parent="Layout/SaveSlots/Save1/Wrapper"]
+layout_mode = 2
+text = "Save Slot 1"
+
+[node name="Load" type="Button" parent="Layout/SaveSlots/Save1/Wrapper"]
+layout_mode = 2
+text = "Load Slot 1"
+
+[node name="Save2" type="Panel" parent="Layout/SaveSlots"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Wrapper" type="VBoxContainer" parent="Layout/SaveSlots/Save2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0434783
+anchor_top = 0.0282486
+anchor_right = 0.956522
+anchor_bottom = 0.977401
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Contents" type="RichTextLabel" parent="Layout/SaveSlots/Save2/Wrapper"]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+fit_content = true
+
+[node name="Save" type="Button" parent="Layout/SaveSlots/Save2/Wrapper"]
+layout_mode = 2
+text = "Save Slot 2"
+
+[node name="Load" type="Button" parent="Layout/SaveSlots/Save2/Wrapper"]
+layout_mode = 2
+text = "Load Slot 2"
+
+[node name="Save3" type="Panel" parent="Layout/SaveSlots"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Wrapper" type="VBoxContainer" parent="Layout/SaveSlots/Save3"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0434783
+anchor_top = 0.0282486
+anchor_right = 0.956522
+anchor_bottom = 0.977401
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Contents" type="RichTextLabel" parent="Layout/SaveSlots/Save3/Wrapper"]
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+fit_content = true
+
+[node name="Save" type="Button" parent="Layout/SaveSlots/Save3/Wrapper"]
+layout_mode = 2
+text = "Save Slot 3"
+
+[node name="Load" type="Button" parent="Layout/SaveSlots/Save3/Wrapper"]
+layout_mode = 2
+text = "Load Slot 3"
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="pressed" from="Layout/Header/Close" to="." method="_on_close_pressed"]
+[connection signal="pressed" from="Layout/SaveSlots/AutoSave/Wrapper/Save" to="." method="_on_autosave_save_pressed"]
+[connection signal="pressed" from="Layout/SaveSlots/AutoSave/Wrapper/Load" to="." method="_on_autosave_load_click"]
+[connection signal="pressed" from="Layout/SaveSlots/Save1/Wrapper/Save" to="." method="_on_slot1_save_pressed"]
+[connection signal="pressed" from="Layout/SaveSlots/Save1/Wrapper/Load" to="." method="_on_slot1_load_pressed"]
+[connection signal="pressed" from="Layout/SaveSlots/Save2/Wrapper/Save" to="." method="_on_slot2_save_pressed"]
+[connection signal="pressed" from="Layout/SaveSlots/Save2/Wrapper/Load" to="." method="_on_slot2_load_pressed"]
+[connection signal="pressed" from="Layout/SaveSlots/Save3/Wrapper/Save" to="." method="_on_slot3_save_pressed"]
+[connection signal="pressed" from="Layout/SaveSlots/Save3/Wrapper/Load" to="." method="_on_slot3_load_pressed"]

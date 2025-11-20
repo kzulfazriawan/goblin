@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bq1vmuxt16bu3"]
+
+[ext_resource type="Texture2D" uid="uid://b7hngyflmnpgp" path="res://addons/goblin/src/tests/images/BG2.jpg" id="1_hylbm"]
+[ext_resource type="Script" uid="uid://dgtw6g3x3fv4a" path="res://addons/goblin/src/templates/point_and_click.gd" id="2_gnidm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h0b51"]
+size = Vector2(694, 546)
+
+[node name="Outside" type="Sprite2D"]
+texture = ExtResource("1_hylbm")
+script = ExtResource("2_gnidm")
+
+[node name="Entrance" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entrance"]
+position = Vector2(384, 16)
+shape = SubResource("RectangleShape2D_h0b51")
+
+[node name="Label" type="Label" parent="Entrance/CollisionShape2D"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Enter"

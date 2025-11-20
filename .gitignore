@@ -1,0 +1,28 @@
+# Godot 4+ specific ignores
+.godot/
+.godot-build/
+
+# Godot 3 specific ignores (if applicable)
+# .import/
+# export/
+
+# User-specific settings
+*.user
+*.cfg.default
+
+# Platform-specific builds
+builds/
+export/
+
+# Crash dumps
+*.dmp
+
+# Editor settings (optional, if you want to share settings)
+# editor_settings-3.tres
+# editor_settings-4.tres
+
+# Temporary files
+*.tmp
+
+# GDScript cache (if not handled by .godot)
+.gd_format_cache/

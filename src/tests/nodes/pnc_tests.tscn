@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://badrx5n2joufd"]
+
+[ext_resource type="PackedScene" uid="uid://bn7pgthpypypb" path="res://addons/goblin/src/tests/nodes/point_and_clicks/longue.tscn" id="1_0on34"]
+[ext_resource type="Script" uid="uid://dan71ehcoh0k" path="res://addons/goblin/src/tests/nodes/pnc_tests.gd" id="1_rby0s"]
+[ext_resource type="PackedScene" uid="uid://bq1vmuxt16bu3" path="res://addons/goblin/src/tests/nodes/point_and_clicks/outside.tscn" id="2_n7pd0"]
+[ext_resource type="Texture2D" uid="uid://cuy1y0m1n2uc" path="res://addons/goblin/src/tests/images/transits.jpg" id="4_n7pd0"]
+
+[node name="PNCTests" type="Node2D"]
+script = ExtResource("1_rby0s")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Transit" type="Sprite2D" parent="Camera2D"]
+modulate = Color(1, 1, 1, 0)
+texture = ExtResource("4_n7pd0")
+
+[node name="Longue" parent="Camera2D" node_paths=PackedStringArray("traversal_transit", "target_callback") instance=ExtResource("1_0on34")]
+visible = false
+modulate = Color(1, 1, 1, 0)
+traversal_transit = NodePath("../Transit")
+target_callback = NodePath("../..")
+
+[node name="Outside" parent="Camera2D" node_paths=PackedStringArray("target_callback") instance=ExtResource("2_n7pd0")]
+visible = false
+modulate = Color(1, 1, 1, 0)
+target_callback = NodePath("../..")

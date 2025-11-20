@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://dg0qi76vq2v7t"]
+
+[ext_resource type="Texture2D" uid="uid://bwg8lwn15oqvc" path="res://addons/goblin/src/tests/images/BG3.jpg" id="1_rteb2"]
+[ext_resource type="Script" uid="uid://dgtw6g3x3fv4a" path="res://addons/goblin/src/templates/point_and_click.gd" id="2_tller"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tller"]
+size = Vector2(318, 848)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_046la"]
+size = Vector2(360, 848)
+
+[node name="Window" type="Sprite2D"]
+texture = ExtResource("1_rteb2")
+script = ExtResource("2_tller")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-279, 112)
+shape = SubResource("RectangleShape2D_tller")
+
+[node name="Label" type="Label" parent="Area2D/CollisionShape2D"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Go to Door"
+
+[node name="Area2D2" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+position = Vector2(76, 112)
+shape = SubResource("RectangleShape2D_046la")
+
+[node name="Label" type="Label" parent="Area2D2/CollisionShape2D"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Go to Hallway"

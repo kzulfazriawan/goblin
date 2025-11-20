@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bn7pgthpypypb"]
+
+[ext_resource type="Texture2D" uid="uid://cb4lb3p4xe312" path="res://addons/goblin/src/tests/images/BG1.jpg" id="1_4qlhh"]
+[ext_resource type="Script" uid="uid://dgtw6g3x3fv4a" path="res://addons/goblin/src/templates/point_and_click.gd" id="2_me6he"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_me6he"]
+size = Vector2(598, 808)
+
+[node name="Longue" type="Sprite2D"]
+texture = ExtResource("1_4qlhh")
+script = ExtResource("2_me6he")
+
+[node name="Outside" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Outside"]
+position = Vector2(661, 136)
+shape = SubResource("RectangleShape2D_me6he")
+
+[node name="Label" type="Label" parent="Outside/CollisionShape2D"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Go Out"

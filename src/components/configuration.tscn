@@ -1,0 +1,303 @@
+[gd_scene load_steps=2 format=3 uid="uid://ild7ew2vegmb"]
+
+[ext_resource type="Script" uid="uid://bufuiejus2vyc" path="res://addons/goblin/src/components/configuration.gd" id="1_sxumg"]
+
+[node name="Configuration" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sxumg")
+
+[node name="Layout" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.02
+anchor_top = 0.0355556
+anchor_right = 0.98
+anchor_bottom = 0.968889
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Header" type="HBoxContainer" parent="Layout"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Layout/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Configuration"
+vertical_alignment = 1
+
+[node name="Close" type="Button" parent="Layout/Header"]
+layout_mode = 2
+text = "Close"
+
+[node name="Tab" type="TabContainer" parent="Layout"]
+layout_mode = 2
+size_flags_vertical = 3
+current_tab = 0
+
+[node name="General" type="MarginContainer" parent="Layout/Tab"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+metadata/_tab_index = 0
+
+[node name="Wrapper" type="GridContainer" parent="Layout/Tab/General"]
+layout_mode = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 2
+
+[node name="Audio" type="VBoxContainer" parent="Layout/Tab/General/Wrapper"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Title" type="Label" parent="Layout/Tab/General/Wrapper/Audio"]
+layout_mode = 2
+text = "Audio"
+
+[node name="Line" type="HSeparator" parent="Layout/Tab/General/Wrapper/Audio"]
+layout_mode = 2
+
+[node name="MasterLabel2" type="Label" parent="Layout/Tab/General/Wrapper/Audio"]
+layout_mode = 2
+text = "Master volume"
+
+[node name="Master" type="HSlider" parent="Layout/Tab/General/Wrapper/Audio"]
+layout_mode = 2
+size_flags_vertical = 1
+max_value = 0.9
+step = 0.01
+
+[node name="MinMaxWrapper" type="HBoxContainer" parent="Layout/Tab/General/Wrapper/Audio"]
+layout_mode = 2
+
+[node name="Min" type="Label" parent="Layout/Tab/General/Wrapper/Audio/MinMaxWrapper"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Min"
+
+[node name="Max" type="Label" parent="Layout/Tab/General/Wrapper/Audio/MinMaxWrapper"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Max"
+horizontal_alignment = 2
+
+[node name="MusicLabel" type="Label" parent="Layout/Tab/General/Wrapper/Audio"]
+layout_mode = 2
+text = "BGM volume"
+
+[node name="Music" type="HSlider" parent="Layout/Tab/General/Wrapper/Audio"]
+layout_mode = 2
+size_flags_vertical = 1
+max_value = 0.6
+step = 0.01
+
+[node name="MinMaxWrapper2" type="HBoxContainer" parent="Layout/Tab/General/Wrapper/Audio"]
+layout_mode = 2
+
+[node name="Min" type="Label" parent="Layout/Tab/General/Wrapper/Audio/MinMaxWrapper2"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Min"
+
+[node name="Max" type="Label" parent="Layout/Tab/General/Wrapper/Audio/MinMaxWrapper2"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Max"
+horizontal_alignment = 2
+
+[node name="EffectsLabel" type="Label" parent="Layout/Tab/General/Wrapper/Audio"]
+layout_mode = 2
+text = "SFX volume"
+
+[node name="Effects" type="HSlider" parent="Layout/Tab/General/Wrapper/Audio"]
+layout_mode = 2
+size_flags_vertical = 1
+max_value = 0.9
+step = 0.01
+
+[node name="MinMaxWrapper3" type="HBoxContainer" parent="Layout/Tab/General/Wrapper/Audio"]
+layout_mode = 2
+
+[node name="Min" type="Label" parent="Layout/Tab/General/Wrapper/Audio/MinMaxWrapper3"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Min"
+
+[node name="Max" type="Label" parent="Layout/Tab/General/Wrapper/Audio/MinMaxWrapper3"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Max"
+horizontal_alignment = 2
+
+[node name="Text" type="VBoxContainer" parent="Layout/Tab/General/Wrapper"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Title" type="Label" parent="Layout/Tab/General/Wrapper/Text"]
+layout_mode = 2
+text = "Texts"
+
+[node name="Line" type="HSeparator" parent="Layout/Tab/General/Wrapper/Text"]
+layout_mode = 2
+
+[node name="SpeedLabel" type="Label" parent="Layout/Tab/General/Wrapper/Text"]
+layout_mode = 2
+text = "Speed"
+
+[node name="Speed" type="HSlider" parent="Layout/Tab/General/Wrapper/Text"]
+layout_mode = 2
+size_flags_vertical = 1
+min_value = 0.1
+max_value = 2.0
+step = 0.1
+value = 1.0
+
+[node name="FastSlowWrapper" type="HBoxContainer" parent="Layout/Tab/General/Wrapper/Text"]
+layout_mode = 2
+
+[node name="Min" type="Label" parent="Layout/Tab/General/Wrapper/Text/FastSlowWrapper"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Fast"
+
+[node name="Max" type="Label" parent="Layout/Tab/General/Wrapper/Text/FastSlowWrapper"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Slow"
+horizontal_alignment = 2
+
+[node name="OpacityLabel" type="Label" parent="Layout/Tab/General/Wrapper/Text"]
+layout_mode = 2
+text = "Opacity"
+
+[node name="Opacity" type="HSlider" parent="Layout/Tab/General/Wrapper/Text"]
+layout_mode = 2
+size_flags_vertical = 1
+max_value = 1.0
+step = 0.1
+
+[node name="TransSolidWrapper" type="HBoxContainer" parent="Layout/Tab/General/Wrapper/Text"]
+layout_mode = 2
+
+[node name="Min" type="Label" parent="Layout/Tab/General/Wrapper/Text/TransSolidWrapper"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Transparent"
+
+[node name="Max" type="Label" parent="Layout/Tab/General/Wrapper/Text/TransSolidWrapper"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Solid"
+horizontal_alignment = 2
+
+[node name="AutoLabel" type="Label" parent="Layout/Tab/General/Wrapper/Text"]
+layout_mode = 2
+text = "Auto Timer (Not Implemented)"
+
+[node name="Auto" type="HSlider" parent="Layout/Tab/General/Wrapper/Text"]
+layout_mode = 2
+size_flags_vertical = 1
+max_value = 1.0
+step = 0.1
+
+[node name="FastSlowWrapper2" type="HBoxContainer" parent="Layout/Tab/General/Wrapper/Text"]
+layout_mode = 2
+
+[node name="Min" type="Label" parent="Layout/Tab/General/Wrapper/Text/FastSlowWrapper2"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Fast"
+
+[node name="Max" type="Label" parent="Layout/Tab/General/Wrapper/Text/FastSlowWrapper2"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Slow"
+horizontal_alignment = 2
+
+[node name="Graphics" type="MarginContainer" parent="Layout/Tab"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+metadata/_tab_index = 1
+
+[node name="Wrapper" type="GridContainer" parent="Layout/Tab/Graphics"]
+layout_mode = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 2
+
+[node name="Window" type="VBoxContainer" parent="Layout/Tab/Graphics/Wrapper"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Title" type="Label" parent="Layout/Tab/Graphics/Wrapper/Window"]
+layout_mode = 2
+text = "Window/Fullscreen Mode"
+
+[node name="Line" type="HSeparator" parent="Layout/Tab/Graphics/Wrapper/Window"]
+layout_mode = 2
+
+[node name="Fullscreen" type="CheckButton" parent="Layout/Tab/Graphics/Wrapper/Window"]
+layout_mode = 2
+text = "Fullscreen"
+
+[node name="Size" type="VBoxContainer" parent="Layout/Tab/Graphics/Wrapper"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Title" type="Label" parent="Layout/Tab/Graphics/Wrapper/Size"]
+layout_mode = 2
+text = "Screen Size"
+
+[node name="Line" type="HSeparator" parent="Layout/Tab/Graphics/Wrapper/Size"]
+layout_mode = 2
+
+[node name="Resolutions" type="OptionButton" parent="Layout/Tab/Graphics/Wrapper/Size"]
+layout_mode = 2
+selected = 0
+item_count = 4
+popup/item_0/text = "1280 x 720"
+popup/item_0/id = 0
+popup/item_1/text = "1366 x 768"
+popup/item_1/id = 1
+popup/item_2/text = "1600 x 900"
+popup/item_2/id = 2
+popup/item_3/text = "1920 x 1080"
+popup/item_3/id = 3
+
+[connection signal="pressed" from="Layout/Header/Close" to="." method="_on_close_pressed"]
+[connection signal="value_changed" from="Layout/Tab/General/Wrapper/Audio/Master" to="." method="_on_master_value_changed"]
+[connection signal="value_changed" from="Layout/Tab/General/Wrapper/Audio/Music" to="." method="_on_music_value_changed"]
+[connection signal="value_changed" from="Layout/Tab/General/Wrapper/Audio/Effects" to="." method="_on_effects_value_changed"]
+[connection signal="value_changed" from="Layout/Tab/General/Wrapper/Text/Speed" to="." method="_on_speed_value_changed"]
+[connection signal="value_changed" from="Layout/Tab/General/Wrapper/Text/Opacity" to="." method="_on_opacity_value_changed"]
+[connection signal="toggled" from="Layout/Tab/Graphics/Wrapper/Window/Fullscreen" to="." method="_on_fullscreen_toggled"]
+[connection signal="item_selected" from="Layout/Tab/Graphics/Wrapper/Size/Resolutions" to="." method="_on_resolutions_item_selected"]

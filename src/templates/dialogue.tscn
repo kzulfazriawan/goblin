@@ -1,0 +1,142 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1n1oe1fbb5fv"]
+
+[ext_resource type="Script" uid="uid://dq4k7yjh24l7n" path="res://addons/goblin/src/templates/dialogue.gd" id="1_amhav"]
+
+[node name="Dialogue" type="Control" node_paths=PackedStringArray("overlay", "panel", "active", "primary", "logs", "log_histories", "sprite_rect")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_amhav")
+overlay = NodePath("Overlay")
+panel = NodePath("Log")
+active = NodePath("Log/Wrapper/Names/Active")
+primary = NodePath("Log/Wrapper/Names/Primary")
+logs = NodePath("Log/Wrapper/Logs")
+log_histories = NodePath("Overlay/Layout/Wrapper/HistoryLogs")
+sprite_rect = NodePath("Sprite")
+metadata/_custom_type_script = "uid://bkr5u71ru80gu"
+
+[node name="Log" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.14
+anchor_top = 0.853333
+anchor_right = 0.98
+anchor_bottom = 0.977778
+grow_horizontal = 2
+grow_vertical = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Wrapper" type="VBoxContainer" parent="Log"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.00595238
+anchor_top = 0.0714286
+anchor_right = 0.97619
+anchor_bottom = 0.928571
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Names" type="HBoxContainer" parent="Log/Wrapper"]
+layout_mode = 2
+
+[node name="Primary" type="Label" parent="Log/Wrapper/Names"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 5
+
+[node name="Active" type="Label" parent="Log/Wrapper/Names"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 5
+horizontal_alignment = 2
+
+[node name="Logs" type="RichTextLabel" parent="Log/Wrapper"]
+layout_mode = 2
+bbcode_enabled = true
+fit_content = true
+
+[node name="History" type="Button" parent="Log"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -40.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "History"
+
+[node name="Overlay" type="Panel" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Header" type="HBoxContainer" parent="Overlay"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.08
+anchor_top = 0.0711111
+anchor_right = 0.92
+anchor_bottom = 0.142222
+grow_horizontal = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Title" type="Label" parent="Overlay/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Histories"
+vertical_alignment = 1
+
+[node name="Close" type="Button" parent="Overlay/Header"]
+layout_mode = 2
+text = "Close"
+
+[node name="Layout" type="ScrollContainer" parent="Overlay"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.08
+anchor_top = 0.142222
+anchor_right = 0.92
+anchor_bottom = 0.977778
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Wrapper" type="MarginContainer" parent="Overlay/Layout"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HistoryLogs" type="RichTextLabel" parent="Overlay/Layout/Wrapper"]
+layout_mode = 2
+bbcode_enabled = true
+fit_content = true
+
+[node name="Sprite" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.01
+anchor_top = 0.773333
+anchor_right = 0.14
+anchor_bottom = 0.977778
+grow_vertical = 0
+expand_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="Log/History" to="." method="_on_history_pressed"]
+[connection signal="pressed" from="Overlay/Header/Close" to="." method="_on_history_pressed"]

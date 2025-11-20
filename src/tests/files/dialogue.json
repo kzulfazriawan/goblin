@@ -1,0 +1,22 @@
+{
+	"names": {
+		"a": "Name A",
+		"b": "Name B",
+		"c": "name C"
+	},
+	"sprites": {
+		"a": "res://addons/goblin/src/tests/images/A.png",
+		"b": "res://addons/goblin/src/tests/images/B.png",
+		"c": "res://addons/goblin/src/tests/images/C.png"
+	},
+	"test": [
+		"a: Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+		"b: Praesent viverra ex felis, vel rhoncus lacus viverra sed.",
+		"Sed arcu erat, viverra tincidunt nisi sed, porttitor iaculis augue.",
+		"c: Sed sit amet consequat turpis. Vivamus dolor justo, ullamcorper in libero at, hendrerit scelerisque elit.",
+		"a: Vestibulum interdum tristique diam, ut ultricies lectus facilisis quis.",
+		"Fusce aliquam lacinia leo, id posuere quam consequat ac.",
+		"b: Nunc maximus nunc quis lorem finibus gravida.",
+		"c: Integer at accumsan diam, et rutrum nisi."
+	]
+}
