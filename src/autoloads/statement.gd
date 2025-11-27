@@ -63,6 +63,9 @@ func get_time_str() -> String:
 		TIME.EVENING: return 'evening'
 	return ''
 
+func set_time(value: TIME) -> void:
+	_time = value
+
 func get_time() -> TIME:
 	return _time
 
@@ -88,6 +91,7 @@ func save_state_to_file(file: String, additional := {}) -> void:
 		'day'              : _day,
 		'time'             : _time,
 		'max_action_points': _max_action_points,
+		'custom_data'      : _custom_data
 	}
 	var json = JSON.stringify(collections)
 	Utils.write_file(file, json)
@@ -103,4 +107,5 @@ func set_state_from_file(file: String) -> void:
 		_day               = json.get('day', _day)
 		_time              = json.get('time', _time)
 		_max_action_points = json.get('max_action_points', _max_action_points)
+		_custom_data       = json.get('custom_data', _custom_data)
 		_wildcards         = 999

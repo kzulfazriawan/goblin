@@ -29,7 +29,6 @@ func _start_tween(target_color: Color, duration: float, callback: Callable) -> v
 # Method to show loading interface when transition scenes is on load progress
 func _shown(state: bool) -> void:
 	$'.'.visible = state
-	
 	if get_parent() != null: get_parent().visible = state
 
 ## Method to transitions start for faded in on loading

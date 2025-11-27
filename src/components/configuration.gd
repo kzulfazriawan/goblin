@@ -196,3 +196,9 @@ func _on_effects_value_changed(value: float) -> void:
 	ProjectSettings.set_setting(CONFIGURATIONS.audio_sfx, value)
 	ProjectSettings.save()
 	Logging.info('Set configuration %s into %.1f' % [CONFIGURATIONS.audio_sfx, value])
+
+func _tween_fade(modulate_color: Color, callback: Callable) -> void:
+	var tween = get_tree().create_tween()
+	if tween.finished.is_connected(callback): tween.finished.disconnect(callback)
+	tween.tween_property($'.', 'modulate', modulate_color, .25)
+	tween.finished.connect(callback)

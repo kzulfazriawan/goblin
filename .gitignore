@@ -23,6 +23,7 @@ export/
 
 # Temporary files
 *.tmp
+*.uid
 
 # GDScript cache (if not handled by .godot)
-.gd_format_cache/
+.gd_format_cache/   
