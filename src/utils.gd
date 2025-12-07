@@ -99,6 +99,22 @@ static func timestamp(y: int = 0, m: int = 0, d: int = 0, h: int = 0, mi: int = 
 		time.minute if mi < 1 else mi
 	]
 
+func _blend_toward(delta: float, animation_node: AnimationTree, parameter: String, toward: float, speed: float) -> float:
+	var blend_pos = animation_node[parameter]
+	return move_toward(blend_pos, toward, speed * delta)
+
+static func animation_tree_blend_toward_center(delta: float, animation_node: AnimationTree, parameter, speed: float) -> void:
+	var utils = Utils.new()
+	animation_node[parameter] = utils._blend_toward(delta, animation_node, parameter, 0.0, speed)
+
+static func animation_tree_blend_toward_left(delta: float, animation_node: AnimationTree, parameter, speed: float) -> void:
+	var utils = Utils.new()
+	animation_node[parameter] = utils._blend_toward(delta, animation_node, parameter, -1.0, speed)
+
+static func animation_tree_blend_toward_right(delta: float, animation_node: AnimationTree, parameter, speed: float) -> void:
+	var utils = Utils.new()
+	animation_node[parameter] = utils._blend_toward(delta, animation_node, parameter, 1.0, speed)
+
 
 ## Returns the number of spaces needed to pad a string to a given length.
 ##

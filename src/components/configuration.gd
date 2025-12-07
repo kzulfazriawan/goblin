@@ -13,6 +13,8 @@ Optimized for readability, scalability, and maintainability.
 enum WINDOW_SIZE { HD, WXGA, HDP, FHD }
 
 #region ____ Constants ____
+const GROUPNAME := 'configuration'
+
 # Maps friendly keys to their actual ProjectSettings paths
 const CONFIGURATIONS := {
 	'dialogue_text_speed' : 'framework/configurations/dialogue/text_speed',
@@ -62,8 +64,8 @@ var _sfx_bus_index:int
 #region ____ Engine Lifecycles ____
 func _init() -> void:
 	# Ensure this panel is registered under 'configuration' group
-	if not is_in_group('configuration'):
-		add_to_group('configuration')
+	if not is_in_group(GROUPNAME):
+		add_to_group(GROUPNAME)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
