@@ -127,6 +127,6 @@ static func space_length(data: String, length: int) -> String:
 		space += ' '
 	return space
 
-static func clear_visibility_children(node: Node, unless: Node) -> void:
+static func clear_visibility_children(node: Node, unless: Variant) -> void:
 	for item in node.get_children():
 		item.visible = false if item != unless else true
