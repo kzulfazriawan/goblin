@@ -43,7 +43,7 @@ func _resource_compare_or_load(comparer: Resource) -> bool:
 func textured_by_time() -> void:
 	var resource_comparer: bool
 	
-	match Statement.get_time():
+	match Statement.time:
 		Statement.TIME.MORNING:
 			resource_comparer = _resource_compare_or_load(load(point_and_click.morning_background))
 		Statement.TIME.NOON:
@@ -75,7 +75,7 @@ func get_activation_occupied() -> bool:
 	return _activation_occupied
 
 func activation_by_time() -> void:
-	match Statement.get_time():
+	match Statement.time:
 		Statement.TIME.MORNING: _eval_activation_area(point_and_click.active_on_morning)
 		Statement.TIME.NOON   : _eval_activation_area(point_and_click.active_on_noon)
 		Statement.TIME.DUSK   : _eval_activation_area(point_and_click.active_on_dusk)

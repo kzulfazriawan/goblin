@@ -21,9 +21,9 @@ func _process(delta: float) -> void:
 	if time_override:
 		processor.textured_by_time()
 		
-		if _time_activation != Statement.get_time():
+		if _time_activation != Statement.time:
 			processor.set_activation_occupied(false)
-			_time_activation = Statement.get_time()
+			_time_activation = Statement.time
 			return
 		
 		if not processor.get_activation_occupied():

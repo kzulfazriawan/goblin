@@ -27,14 +27,14 @@ func parse_log_string(v: String) -> Dictionary:
 		active_log    = split[1].strip_edges()
 		active_sprite = load(sprites[active_name]) if active_name in sprites else null
 		
-		for i in replacer:
-			active_log = active_log.replace(i, replacer.get(i))
-		
 		result = {
 			'log'   : active_log,
 			'name'  : names[active_name],
 			'active': bool(active_name == name_as_active_character)
 		}
+	
+	for i in replacer:
+		result.log = result.log.replace(i, replacer.get(i))
 	
 	add_history_line(v)
 	return result
@@ -42,4 +42,5 @@ func parse_log_string(v: String) -> Dictionary:
 ## Method to running the callables in the dialogue
 func parse_callables(v: Array) -> void:
 	for i in v:
+
 		i.call()

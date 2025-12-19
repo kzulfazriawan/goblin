@@ -6,92 +6,81 @@ enum TIME { MORNING, NOON, DUSK, EVENING }
 const AUTOSAVE_FILE := 'user://autosave.sav'
 
 #region ____Game Statement____
+# Currency format in the game
+var currency_format := '$'
 # Amount of the currency in the game
-var _currency: String
+var currency:
+	set(amount):
+		if typeof(amount) != TYPE_INT:
+			push_error(amount + ' Currency amount must be int')
+			return
+		
+		currency = Marshalls.utf8_to_base64(str(amount))
+	get:
+		return currency_format + Marshalls.base64_to_utf8(currency)
 
 # Current in-game day counter
-var _day: int = 0
-
+var day := 1
 # Current time-of-day phase
-var _time: TIME = TIME.NOON
-
+var time := TIME.MORNING
 # A wildcard state for the story-progression or any utilities required
-var _wildcards := -1
-
+var wildcards := -1
 # Remaining action points in the current time phase
-var _action_point: int = 3
-
+var action_point: int = 3
 # Maximum action points in the game
-var _max_action_points := 3
-
-var _custom_data := {}
+var max_action_points := 3
+# Inventories collections
+var inventories := []
+# Custom data statment game
+var custom_data := {}
 #endregion
 
-#region ---- CURRENCY, TIME & ACTIONS ----
-func set_currency_amount(value: int) -> void:
-	_currency = Marshalls.utf8_to_base64(str(value))
-
-func get_currency_amount() -> int:
-	return int(Marshalls.base64_to_utf8(_currency))
-
+#region ____Utilities methods____
+## Adding the amount number of the currency
+##
+## @param value: Number of the amount value of the currency that will be add
 func add_currency_amount(value: int) -> void:
-	var original_currency = int(Marshalls.base64_to_utf8(_currency)) if _currency != null else 0
-	set_currency_amount(original_currency + value)
+	currency = int(currency.replace(currency_format, '')) + value
+
+## Spend the amount number of the currency
+##
+## @param value: Number of the amount value of the currency that will be spent
+func spend_currency_amount(value: int) -> void:
+	currency = int(currency.replace(currency_format, '')) - value
 
 ## Spend one action point. When points hit 0, advance to the next time phase.
+##
+## @param is_force: Optional value that will force to spent all the action points
 func spend_action(is_force := false) -> void:
-	_action_point -= 1 if not is_force else _max_action_points
-	
-	if _action_point < 1:
-		advance_time()
+	action_point -= 1 if not is_force else max_action_points
+	if action_point < 1: advance_time()
 
 ## Advance to the next time phase, reset action points. When wrapping to MORNING, increment day.
 func advance_time() -> void:
-	_time         = (_time + 1) % TIME.size()
-	_action_point = _max_action_points
-	_wildcards    = -1
+	time         = (time + 1) % TIME.size()
+	action_point = max_action_points
+	wildcards    = -1
 	
-	if _time == TIME.MORNING:
-		_day += 1
+	if time == TIME.MORNING: day += 1
 
 ## Return the time and translate as a string
-func get_time_str() -> String:
-	match get_time():
+##
+## @return: Variant value either string or null
+func get_time_str() -> Variant:
+	match time:
 		TIME.MORNING: return 'morning'
-		TIME.NOON: return 'noon'
-		TIME.DUSK: return 'dusk'
+		TIME.NOON   : return 'noon'
+		TIME.DUSK   : return 'dusk'
 		TIME.EVENING: return 'evening'
-	return ''
-
-func set_time(value: TIME) -> void:
-	_time = value
-
-func get_time() -> TIME:
-	return _time
-
-func get_day() -> int:
-	return _day
-#endregion
-
-func set_wildcards(value: int) -> void:
-	_wildcards = value
-
-func get_wildcards() -> int:
-	return _wildcards
-
-func set_custom_data(index: String, value: Variant) -> void:
-	_custom_data.set(index, value)
-
-func get_custom_data() -> Dictionary:
-	return _custom_data
+	return null
 
 func save_state_to_file(file: String, additional := {}) -> void:
 	var collections = {
-		'currency'         : _currency,
-		'day'              : _day,
-		'time'             : _time,
-		'max_action_points': _max_action_points,
-		'custom_data'      : _custom_data
+		'currency'         : currency,
+		'day'              : day,
+		'time'             : time,
+		'max_action_points': max_action_points,
+		'custom_data'      : custom_data
 	}
 	var json = JSON.stringify(collections)
 	Utils.write_file(file, json)
@@ -103,9 +92,10 @@ func set_state_from_file(file: String) -> void:
 	var json = Utils.json_parse(file)
 	
 	if not json.is_empty():
-		_currency          = json.get('currency', _currency)
-		_day               = json.get('day', _day)
-		_time              = json.get('time', _time)
-		_max_action_points = json.get('max_action_points', _max_action_points)
-		_custom_data       = json.get('custom_data', _custom_data)
-		_wildcards         = 999
+		currency          = json.get('currency', currency)
+		day               = json.get('day', day)
+		time              = json.get('time', time)
+		max_action_points = json.get('max_action_points', max_action_points)
+		custom_data       = json.get('custom_data', custom_data)
+		wildcards         = 999
+#endregion
