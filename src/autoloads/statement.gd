@@ -17,7 +17,7 @@ var currency:
 		
 		currency = Marshalls.utf8_to_base64(str(amount))
 	get:
-		return currency_format + Marshalls.base64_to_utf8(currency)
+		return currency_format + Marshalls.base64_to_utf8(currency) if currency != null else '0'
 
 # Current in-game day counter
 var day := 1
@@ -30,7 +30,7 @@ var action_point: int = 3
 # Maximum action points in the game
 var max_action_points := 3
 # Inventories collections
-var inventories := []
+var inventories := {}
 # Custom data statment game
 var custom_data := {}
 #endregion
@@ -47,6 +47,9 @@ func add_currency_amount(value: int) -> void:
 ## @param value: Number of the amount value of the currency that will be spent
 func spend_currency_amount(value: int) -> void:
 	currency = int(currency.replace(currency_format, '')) - value
+
+func get_raw_currency() -> int:
+	return int(currency.replace(currency_format, ''))
 
 ## Spend one action point. When points hit 0, advance to the next time phase.
 ##

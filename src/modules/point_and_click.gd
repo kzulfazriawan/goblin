@@ -13,6 +13,7 @@ const PREFIX := {
 	'INTERACTION': 'interaction_'
 }
 
+@export var uid_persistence := ''
 @export_subgroup('Traversal')
 @export var traversal_transit: Sprite2D
 @export var skip_transit := false
@@ -39,6 +40,7 @@ class Processor extends PointAndClickProcessorClass:
 	
 	func _init(node: PointAndClick) -> void:
 		point_and_click = node
+		uid = point_and_click.uid_persistence
 	
 	# Method to activate/connect basic signal
 	func connect_signals(enable: Callable, disable: Callable) -> void:

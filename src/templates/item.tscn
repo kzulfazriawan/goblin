@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6ddi66tiqfgv"]
+
+[ext_resource type="Script" uid="uid://bgwe1x3npp0fo" path="res://addons/goblin/src/templates/item.gd" id="1_sbx03"]
+
+[node name="Item" type="Node"]
+script = ExtResource("1_sbx03")
+metadata/_custom_type_script = "uid://q8xl6fs5bpdp"
